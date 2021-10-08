@@ -1,0 +1,90 @@
+@page "/AdultList"
+@using ToDo.Data
+@using System.Text
+@using global::Models
+
+@inject IFamilyService _familyService
+
+<h3>AdultList</h3>
+
+<p>
+    Filter by Name: <input type="text" @oninput="@((arg) => Filter(arg))" style="width:150px"/>
+</p>
+
+<table class="table">
+    <tbody>
+              <RadzenDataList WrapItems="true" AllowPaging="true" Data="@adults" TItem="Adult">
+                  <Template Context="items">
+                      <RadzenCard Style="width:600px; margin-bottom: 20px; height:400px;">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div>Name: </div>
+                                  <b>@items.FirstName @items.LastName</b>
+                                  <div style="margin-top:20px">Age:</div>
+                                  <b>@items.Age</b>
+                                  <div style="margin-top:20px">Job Title & Salary</div>
+                                  <b>@items.JobTitle</b>
+                                  <br/>
+                                  <img src="boy.png" Style="width:100px;"/>
+                                  <img src="girl.png" Style="width:100px;"/>
+                              </div>
+                              <div class="col-md-6">
+                                  <div style="margin-top:20px">Height</div>
+                                  <b>@items.Height</b>
+                                  <div style="margin-top:20px">Weight</div>
+                                  <b>@items.Weight</b>
+                                  <div style="margin-top:20px">EyeColor</div>
+                                  <b>@items.EyeColor</b>
+                                  <div style="margin-top:20px">HairColor</div>
+                                  <b>@items.HairColor</b>
+                                  <div style="margin-top:20px">Sex</div>
+                                  <b>@items.Sex</b>
+                              </div>
+                          </div>
+                      </RadzenCard>
+                  </Template>
+                </RadzenDataList>
+        </tbody>
+    </table>
+
+
+@code {
+    private IList<Adult> adultList;
+    private IList<Adult> adults;
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+        adultList = _familyService.GetAdults();
+        adults = adultList;
+    }
+
+    private void Filter(ChangeEventArgs changeEventArgs)
+    {
+        string? filterById = null;
+        try
+        {
+            filterById = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+        }
+        if (filterById != null)
+        {
+            adultList = adults.Where(t => t.FirstName == filterById).ToList();
+            adultList = adults;
+        }
+        else
+        {
+            adultList= adults;
+        }
+    }
+
+
+
+
+}
+
+
+
+

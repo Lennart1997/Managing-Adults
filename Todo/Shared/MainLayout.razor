@@ -1,0 +1,36 @@
+@using ToDo.Authentication
+@namespace LoginComponent
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+ <AuthorizeView>
+    <Authorized>
+    <div class="page">
+        <NavMenu/>
+        @Body
+    </div>
+    </Authorized>
+        </AuthorizeView>
+
+<AuthorizeView>
+    <NotAuthorized>
+        <Login/>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+    
+    [CascadingParameter] protected Task<AuthenticationState> AuthStat { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var user = (await AuthStat).User;
+        if(!user.Identity.IsAuthenticated)
+        {
+            NavigationManager.NavigateTo($"/AdultList");
+    // NavigationManager.NavigateTo($"/Login?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}");
+        }
+    }
+}

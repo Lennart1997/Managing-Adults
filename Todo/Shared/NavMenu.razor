@@ -1,0 +1,49 @@
+﻿@using ToDo.Authentication
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<RadzenCard Style="height: 100px">
+    <RadzenMenu>
+        <RadzenMenuItem Text="Home" Icon="home" Path="AdultList" >
+        </RadzenMenuItem>
+
+        <AuthorizeView Policy="MustBeAdmin">
+            <RadzenMenuItem Text="Adult" Icon="accessibility" Path="AddAdults">                     
+            </RadzenMenuItem>                
+                           </AuthorizeView>
+        
+        <RadzenMenuItem Text="Diagram" Icon="assessment" Path="Diagram">
+        </RadzenMenuItem>
+        
+        <RadzenMenuItem Text="" Icon="input" >
+                    <a href="" @onclick="PerformLogout">
+                        Log out
+                    </a>
+        </RadzenMenuItem>
+    </RadzenMenu>
+</RadzenCard>
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    
+
+    public async Task PerformLogout() {
+    
+        try {
+            ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/");
+        } catch (Exception e) { }
+    }
+
+    
+    
+
+}
