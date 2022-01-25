@@ -599,11 +599,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/lennartsargezian/RiderProjects/ToDo/Todo/Todo.csproj",
+      "projectUniqueName": "/Users/lennartsargezian/Documents/GitHub/Managing-Adults/Todo/Todo.csproj",
       "projectName": "Todo",
-      "projectPath": "/Users/lennartsargezian/RiderProjects/ToDo/Todo/Todo.csproj",
+      "projectPath": "/Users/lennartsargezian/Documents/GitHub/Managing-Adults/Todo/Todo.csproj",
       "packagesPath": "/Users/lennartsargezian/.nuget/packages/",
-      "outputPath": "/Users/lennartsargezian/RiderProjects/ToDo/Todo/obj/",
+      "outputPath": "/Users/lennartsargezian/Documents/GitHub/Managing-Adults/Todo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/lennartsargezian/.nuget/NuGet/NuGet.Config"
@@ -653,7 +653,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
       }
     }
   }
