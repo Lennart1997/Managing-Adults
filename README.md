@@ -1,6 +1,6 @@
 # Managing-Adults
 
-This is an application for managing adults and view statistics. Using ASP.NET Core, Blazor & Radzen for styling. Data is loaded and stored in a file using JSON format.
+This is an application for managing adults and view statistics. Using ASP.NET Core, Blazor & Radzen. Data is loaded and stored in a file using JSON format.
 
 # Video
 
